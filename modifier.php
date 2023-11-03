@@ -1,3 +1,4 @@
+<?php require_once('editEtudiant.php');?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,57 +14,71 @@
 </head>
 <body>
    
-  <nav class="navbar navbar-light bg-light">
-    <div class="container-fluid">
-      <a href="etudiant.html">Go Back</a>
-    </div>
-  </nav>
+        <nav class="navbar navbar-expand-lg navbar-dark  bg-dark">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">Home</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link active" href="etudiant.html">Etudiant</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
       <div class="p-3" style="width: 600px; margin: auto">
         <div class="card" >
-            <div class="card-header">ajouter un étudiant:</div>
+            <div class="card-header">Modification:</div>
             <div class="p-3">
-                <form method="post" action="saveStudent.php" >
+                <form method="post" action="editEtudiant.php" >
     
                     <div class="mb-2">
                         <label class="form-label">Nom</label>
-                        <input type="text" name="nom" class="form-control" th:value="${etudiant.nom}">
+                        <input type="text" name="nom" class="form-control" value=" <?php echo $nom; ?>">
     
                     </div>
                     <div class="mb-2">
                         <label class="form-label">Prénom</label>
-                        <input type="text" name="prenom" class="form-control" th:value="${etudiant.prenom}">
+                        <input type="text" name="prenom" class="form-control" value="<?php echo $prenom; ?>">
                     </div>
+
                     <div class="mb-2">
                         <label class="form-label">Cne</label>
-                        <input type="text" name="cne" class="form-control" th:value="${etudiant.cne}">
+                        <input type="text" name="cne" class="form-control" value="<?php echo $cne; ?>">
+    
                     </div>
+              
                     <div class="mb-2">
                         <label class="form-label">Cni</label>
-                        <input type="text" name="cni" class="form-control" th:value="${etudiant.cni}">
+                        <input type="text" name="cni" class="form-control" value="<?php echo $cni; ?>">
     
                     </div>
                     <div class="mb-2">
                         <label class="form-label">Date de naissance</label>
-                        <input type="date" name="date_naissance" class="form-control" th:value="${etudiant.date_naissance}">
+                        <input type="date" name="date_naissance" class="form-control" value="<?php echo $date_naissance; ?>">
     
                     </div>
                     <div class="mb-2">
                         <label class="form-label">Téléphone</label>
-                        <input type="text" name="tele" class="form-control" th:value="${etudiant.tele}">
+                        <input type="text" name="tele" class="form-control" value=" <?php echo $tele; ?>">
     
                     </div>
                     <div class="mb-2">
                         <label class="form-label">email</label>
-                        <input type="text" name="email" class="form-control" th:value="${etudiant.email}">
+                        <input type="text" name="email" class="form-control" value=" <?php echo $email; ?>">
     
                     </div>
                     <div class="mb-2">
                         <label class="form-label">Mot de passe</label>
-                        <input type="text" name="mot_pass" class="form-control" th:value="${etudiant.mot_pass}">
+                        <input type="text" name="mot_pass" class="form-control" value=" <?php echo $mot_pass; ?>">
                         <span class="text-danger" th:errors="${etudiant.nom}"></span>
     
                     </div>
-                    <button class="btn btn-success">Ajouter</button>
+                    <button class="btn btn-success">Modifier</button>
                 </form>
     
             </div>
