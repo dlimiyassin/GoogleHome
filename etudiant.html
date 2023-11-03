@@ -53,11 +53,12 @@
             </form>
           </div>
           <div class="col">
-            <form action="@{/index}" method="get">
+            <form action="#" method="get">
               <div class="row">
                 <div class="col-10">
                   <input
                     type="text"
+                    id="searchInput"
                     name="search"
                     class="form-control"
                     placeholder="Rechercher"
@@ -109,7 +110,48 @@
         .catch((error) => {
           console.error("Error:", error);
         });
-      
+      // Fetch data from the server using AJAX
+      fetch("fetchData.php")
+        .then((response) => response.json())
+        .then((data) => {
+          const tableBody = document.querySelector("tbody");
+
+          // Function to filter students based on search input
+          function filterStudents(searchTerm) {
+            tableBody.innerHTML = ""; // Clear the table body before adding filtered students
+            data.forEach((e) => {
+              if (
+                e.nom.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                e.prenom.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                e.cne.includes(searchTerm)
+              ) {
+                const tableRow = document.createElement("tr");
+                tableRow.innerHTML = `
+              <td>${e.nom}</td>
+              <td>${e.prenom}</td>
+              <td>${e.cne}</td>
+              <td>${e.birth_date}</td>
+              <td><a href="editEtudiant.php?cne=${e.cne}" class="btn btn-success"><i class="bi bi-pencil-square"></i></a></td>
+              <td><a href="deleteStudent.php?cne=${e.cne}" class="btn btn-danger delete-button"><i class="bi bi-trash"></i></a></td>
+            `;
+                tableBody.appendChild(tableRow);
+              }
+            });
+          }
+
+          // Event listener for search input
+          const searchInput = document.getElementById("searchInput");
+          searchInput.addEventListener("input", (event) => {
+            const searchTerm = event.target.value;
+            filterStudents(searchTerm);
+          });
+
+          // Initial display of all students
+          filterStudents(""); // Empty string will show all students initially
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
     </script>
   </body>
 </html>
