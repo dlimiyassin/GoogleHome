@@ -21,29 +21,13 @@
     <title>Form</title>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="index.html">Home</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link active" href="etudiant.html">Etudiant</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+      <nav class="navbar navbar-light bg-light">
+    <div class="container-fluid">
+      <span class="navbar-brand mb-0 h1">Gestion Des Etudiants</span>
+      <!-- Add a logout button with the 'logout-btn' class to position it to the right -->
+      <button id="logoutBtn" class="btn btn-outline-danger logout-btn">Logout</button>
+    </div>
+  </nav>
     <div class="m-5">
       <div class="card p-3">
         <div class="row">
@@ -152,6 +136,18 @@
         .catch((error) => {
           console.error("Error:", error);
         });
+
+    // Wait for the document to be fully loaded
+    document.addEventListener("DOMContentLoaded", function() {
+      // Find the logout button by its ID
+      var logoutButton = document.getElementById("logoutBtn");
+
+      // Add a click event listener to the logout button
+      logoutButton.addEventListener("click", function() {
+        // Redirect the user to index.html
+        window.location.href = "index.html";
+      });
+    });
     </script>
   </body>
 </html>
