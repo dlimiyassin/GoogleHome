@@ -101,7 +101,7 @@
                         <td>${e.cne}</td>
                         <td>${e.birth_date}</td>
                         <td><a href="editEtudiant.php?cne=${e.cne}" class="btn btn-success"><i class="bi bi-pencil-square"></i></a></td>
-                        <td><a href="delete.php?cne=${e.cne}" class="btn btn-danger"><i class="bi bi-trash"></i></a></td>
+                        <td><a href="deleteStudent.php?cne=${e.cne}" class="btn btn-danger delete-button"><i class="bi bi-trash"></i></a></td>
                     `;
             document.querySelector("tbody").appendChild(tableRow);
           });
@@ -109,6 +109,7 @@
         .catch((error) => {
           console.error("Error:", error);
         });
+      
     </script>
   </body>
 </html>

@@ -13,7 +13,6 @@ if ($conn->connect_error) {
 // Fetch data from the database
 $sql = "SELECT nom, prenom, cne, birth_date FROM etudiant";
 $result = $conn->query($sql);
-
 $listEtudiant = array();
 
 if ($result->num_rows > 0) {
